@@ -1,30 +1,48 @@
-# Tensorflow Training Techniques
-***
+# TensorFlow Training Techniques
 
-Custom and Distributed Training with TensorFlow. Program Files for TensorFlow Integrated Courses: Advanced Techniques.
+Hands-on notebooks for the **Custom and Distributed Training with TensorFlow** course. The material covers automatic differentiation, custom training loops, graph execution, and distributed training strategies.
 
-## Week 1 - Differentiation and Gradients
-***
+> These notebooks accompany the [DeepLearning.AI course on Coursera](https://www.coursera.org/learn/custom-distributed-training-with-tensorflow). Course materials and assignments are provided for learning and practice.
 
-This week, you will get a detailed look at the fundamental building blocks of TensorFlow - tensor objects. For example, you will be able to describe the difference between eager mode and graph mode in TensorFlow, and explain why eager mode is very user friendly for you as a developer. You will also use TensorFlow tools to calculate gradients so that you don’t have to look for your old calculus textbooks next time you need to get a gradient!
+## Contents
 
-## Week 2 - Custom Training
-***
+| Week | Topics | Notebooks |
+| --- | --- | --- |
+| 1 | Tensors, automatic differentiation, and `GradientTape` | [Assignment](week1/w1_assignment.ipynb) · [Lab 1: Basic Tensors](week1/w1_lab1.ipynb) · [Lab 2: Gradient Tape](week1/w1_lab2.ipynb) |
+| 2 | Custom models, training loops, and loss functions | [Assignment: Breast Cancer Prediction](week2/w2_assignment.ipynb) · [Lab 1: Custom Training Basics](week2/w2_lab1.ipynb) · [Lab 2: Fashion MNIST](week2/w2_lab2.ipynb) |
+| 3 | AutoGraph and TensorFlow graph execution | [Assignment: Horse or Human](week3/w3_assignment.ipynb) · [Lab 1: AutoGraph Basics](week3/w3_lab1.ipynb) · [Lab 2: Complex Graphs](week3/w3_lab2.ipynb) |
+| 4 | Distributed training with `tf.distribute` | [Assignment](week4/w4_assignment.ipynb) · [Lab 1: Mirrored Strategy](week4/w4_lab1.ipynb) · [Lab 2: Multi-GPU](week4/w4_lab2.ipynb) · [Lab 3: TPU Strategy](week4/w4_lab3.ipynb) · [Lab 4: One Device Strategy](week4/w4_lab4.ipynb) |
 
-This week, you will build custom training loops using GradientTape and TensorFlow Datasets. Being able to write your own training loops will give you more flexibility and visibility with your model training. You will also use a function to calculate the derivatives of functions so that you don’t have to look to your old calculus textbooks to calculate gradients.
+Assignments are graded course exercises; labs are guided practice. Each notebook includes its own instructions and code.
 
-## Week 3 - Graph Mode
-***
+## Getting started
 
-This week, you’ll learn about the benefits of generating code that runs in “graph mode”. You’ll take a peek at what graph code looks like, and you’ll practice generating this more efficient code automatically with TensorFlow’s tools, so that you don’t have to write the graph code yourself!
+You can open a notebook in [Google Colab](https://colab.research.google.com/) or run it locally in Jupyter. To run locally, use a Python environment with TensorFlow 2.x and the libraries imported by the notebook. A common starting point is:
 
-## Week 4 - Distributed Training
-***
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Windows: .venv\Scripts\activate
+python -m pip install --upgrade pip
+python -m pip install jupyterlab tensorflow tensorflow-datasets tensorflow-hub numpy pandas matplotlib scikit-learn tqdm
+jupyter lab
+```
 
-This week, you will harness the power of distributed training to process more data and train larger models, faster. You’ll get an overview of various distributed training strategies and then practice working with two strategies, one that trains on multiple GPU cores, and the other that trains on multiple TPU cores. Get your cape ready, because you’re going to get some superpowers this week!
+Some notebooks require a GPU or TPU to follow the distributed-training exercises as written. The TPU lab is designed for a TPU-enabled runtime, such as Google Colab. CPU execution may work for parts of the material but can be much slower.
 
-### Informations
-***
+### Dataset notes
 
-- Course produced by **Laurence Moroney**, **Andrew Ng.** and **Eddy Shyu**.
-- [Visit the course](https://www.coursera.org/learn/custom-distributed-training-with-tensorflow).
+- `week2/w2_assignment.ipynb` reads `./data/data.csv`. When running from the repository root, place the course-provided CSV at `data/data.csv` (or adjust `data_file` if your working directory differs).
+- `week2/w2_lab2.ipynb` loads Fashion MNIST with downloads disabled. Make sure the dataset is already present in the TensorFlow Datasets cache, or change the notebook's `download` option to `True`.
+- Other notebooks may download datasets or TensorFlow Hub models on first run. This requires network access and enough local storage.
+
+## Repository layout
+
+```text
+.
+├── week1/   # Tensors and gradients
+├── week2/   # Custom training
+├── week3/   # Graph mode and AutoGraph
+├── week4/   # Distributed training
+├── LICENSE
+└── README.md
+```

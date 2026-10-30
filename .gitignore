@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Local datasets and generated training artifacts
+data/
+training_checkpoints/
+tmp/
+mymodel.zip
+logs/
+events.out.tfevents.*
+
+# macOS
+.DS_Store
